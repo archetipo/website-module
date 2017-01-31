@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+      <template id="website_event.registration_attendee_details" customize_show="True" name="ContiRegistration Attendee Details">
+          <div id="modal_attendees_registration" class="modal fade" tabindex="-1" role="dialog">
+              <div class="modal-dialog modal-lg">
+                  <form id="attendee_registration" t-attf-action="/event/#{slug(event)}/registration/confirm" method="post">
+                      <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                              <h4 class="modal-title" id="myModalLabel"><strong>Partecipanti</strong></h4>
+                              <t t-raw="event.message_on_ticket"/>
+                          </div>
+                          <div class="modal-body">
+                              <div class="container">
+                                  <t t-set="counter_type" t-value="1"/>
+                                  <t t-set="counter" t-value="0"/>
+                                  <t t-foreach="tickets" t-as="ticket">
+                                      <h4 class="page-header mt16">
+                                          <strong>
+                                              Tipo # <t t-raw="counter_type"/>: <t t-esc="ticket['name']"/> (
+                                              <t t-if="ticket['price'] > 0">
+                                                  <t t-esc="ticket['price']" t-esc-options='{"widget": "monetary", "display_currency": "website.pricelist_id.currency_id"}'/>
+                                              </t>
+                                              <t t-if="ticket['price'] == 0">Free</t>)
+                                          </strong>
+                                      </h4>
+                                      <div class="row">
+                                          <div class="col-md-3"><strong>Nome</strong></div>
+                                          <div class="col-md-3"><strong>Email</strong></div>
+                                          <div class="col-md-3"><strong>Codice</strong> </div>
+                                          <div class="col-md-3"><strong>Telefono</strong> <span class="text-muted">(Optional)</span></div>
+                                      </div>
+                                      <t t-foreach="range(1, ticket['quantity'] + 1)" t-as="att_counter" name="attendee_loop">
+                                          <t t-set="counter" t-value="counter + 1"/>
+                                          <div class="row mb4">
+                                              <t t-if="not ticket['single_registrant']">
+                                                <t t-set="attendee_placeholder">Attendee #%s</t>
+                                                <div class="col-md-3"><input class='form-control' type='text' t-attf-name="#{counter}-name" required="This field is required" t-att-placeholder="attendee_placeholder %counter"/></div>
+                                                <div class="col-md-3"><input class='form-control' type='email' t-attf-name="#{counter}-email" required="This field is required"/></div>
+                                                <div class="col-md-3"><input class='form-control' type='text' t-attf-name="#{counter}-code_card" required="ticket['code_card_desc']" t-att-disabled="not ticket['use_code_card']" t-att-placeholder="ticket['code_card_desc']" /></div>
+                                                <div class="col-md-3"><input class='form-control' type='tel' t-attf-name="#{counter}-phone"/></div>
+                                              </t>
+                                              <t t-if="ticket['single_registrant'] and counter == 2">
+                                                <t t-set="attendee_placeholder">Attendee #%s</t>
+                                                <div class="col-md-3"><input class='form-control' type='text' t-attf-name="#{counter}-name" required="This field is required" t-att-placeholder="attendee_placeholder %counter"/></div>
+                                                <div class="col-md-3"><input class='form-control' type='email' t-attf-name="#{counter}-email" required="This field is required"/></div>
+                                                <div class="col-md-3"><input class='form-control' type='text' t-attf-name="#{counter}-code_card" required="ticket['code_card_desc']" t-att-placeholder="ticket['code_card_desc']"/></div>
+                                                <div class="col-md-3"><input class='form-control' type='tel' t-attf-name="#{counter}-phone"/></div>
+                                              </t>
+                                              <input class='hidden' type='text' t-attf-name="#{counter}-ticket_id" t-attf-value="#{ticket['id']}"/>
+                                          </div>
+                                      </t>
+                                      <t t-set="counter_type" t-value="counter_type + 1"/>
+                                  </t>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <div class="pull-left">
+                                  <button type="submit" class="btn btn-primary">Continue</button> or
+                                  <a class="js_goto_event" style="cursor: pointer;"> Cancel Registration</a>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </template>
+
+      <template id="registration_template" inherit_id="website_event.registration_template">
+          <xpath expr="//thead" position="replace">
+            <thead>
+                <tr>
+                    <th>Ticket Type</th>
+                    <th style="min-width:100px">End of Subscription</th>
+                    <th style="min-width:100px">Price</th>
+                    <th></th>
+                    <th>Code Card</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+          </xpath>
+          <xpath expr="//tbody" position="replace">
+              <tbody>
+                  <t t-foreach="event.event_ticket_ids" t-as="ticket">
+                      <tr itemscope="itemscope" itemtype="http://data-vocabulary.org/Offer" t-if="not ticket.is_expired">
+                          <td itemscope="itemscope" itemtype="http://data-vocabulary.org/Product">
+                              <div itemprop="name" t-field="ticket.name"/>
+                              <div><small itemprop="description" t-field="ticket.product_id.description_sale"/></div>
+                          </td>
+                          <td>
+                              <t t-if="ticket.deadline">
+                                  <span itemprop="priceValidUntil" t-field="ticket.deadline"/>
+                              </t>
+                              <t t-if="not ticket.deadline">
+                                  <span>Unlimited</span>
+                              </t>
+                          </td>
+                          <td>
+                                  <t t-if="ticket.price or editable">
+                                    <t t-if="(ticket.price-ticket.price_reduce) &gt; 1">
+                                      <del class="text-danger mr4" style="white-space: nowrap;" t-field="ticket.price" t-field-options='{
+                                        "widget": "monetary",
+                                        "from_currency": "website.currency_id",
+                                        "display_currency": "user_id.partner_id.property_product_pricelist.currency_id"
+                                      }'/>
+                                    </t>
+                                    <span t-field="ticket.price_reduce" t-field-options='{
+                                     "widget": "monetary",
+                                     "display_currency": "website.pricelist_id.currency_id"
+                                }'/>
+                                  <span itemprop="price" style="display:none;" t-esc="ticket.price"/>
+                                  <span itemprop="priceCurrency" style="display:none;" t-esc="website.pricelist_id.currency_id.name"/>
+                              </t>
+                              <t t-if="not ticket.price and not editable">
+                                  <span>Free</span>
+                              </t>
+                          </td>
+                          <td>
+                              <span t-if="ticket.seats_max and ((ticket.seats_reserved or 0)*100 / ticket.seats_max)&gt;75" class="text-muted">
+                                  <t t-esc="ticket.seats_max - ticket.seats_reserved"/> <span>left</span>
+                              </span>
+                          </td>
+                          <td>
+                              <t t-if="ticket.use_code_card">
+                                <span t-esc="ticket.code_card" />
+                              </t>
+                          </td>
+                          <td>
+                              <t t-if="ticket.single_registrant">
+                                <select t-if="(event.seats_available or event.seats_availability == 'unlimited') and (ticket.seats_available or ticket.seats_availability == 'unlimited')" t-attf-name="nb_register-#{ticket.id}" class="form-control">
+                                    <t t-set="seats_max_ticket" t-value="(ticket.seats_availability == 'unlimited' or ticket.seats_available > 50) and 51 or ticket.seats_available + 1"/>
+                                    <t t-set="seats_max_event" t-value="(event.seats_availability == 'unlimited' or event.seats_available > 50) and 51 or event.seats_available + 1"/>
+                                    <t t-set="seats_max" t-value="min(seats_max_ticket, seats_max_event)"/>
+                                    <t t-foreach="range(0, seats_max)" t-as="nb">
+                                        <t t-if="not nb == 1">
+                                          <option t-esc="nb"/>
+                                        </t>
+                                    </t>
+                                </select>
+                              </t>
+                              <t t-if="not ticket.single_registrant">
+                                <select t-if="(event.seats_available or event.seats_availability == 'unlimited') and (ticket.seats_available or ticket.seats_availability == 'unlimited')" t-attf-name="nb_register-#{ticket.id}" class="form-control">
+                                    <t t-set="seats_max_ticket" t-value="(ticket.seats_availability == 'unlimited' or ticket.seats_available > 30) and 31 or ticket.seats_available + 1"/>
+                                    <t t-set="seats_max_event" t-value="(event.seats_availability == 'unlimited' or event.seats_available > 30) and 31 or event.seats_available + 1"/>
+                                    <t t-set="seats_max" t-value="min(seats_max_ticket, seats_max_event)"/>
+                                    <t t-foreach="range(0, seats_max)" t-as="nb">
+                                          <option t-esc="nb"/>
+                                    </t>
+                                </select>
+                              </t>
+                              <span t-if="(not event.seats_available and event.seats_availability == 'limited') or (ticket.seats_availability == 'limited' and not ticket.seats_available)">Sold Out</span>
+                          </td>
+                      </tr>
+                  </t>
+              </tbody>
+          </xpath>
+          <xpath expr="//button[@type='submit']" position="replace">
+              <button type="submit" t-if="event.state == 'confirm' and (event.seats_available or event.seats_availability == 'unlimited')"
+                  class="btn btn-primary btn-lg pull-right a-submit" t-attf-id="#{event.id}">Order Now</button>
+          </xpath>
+          <xpath expr="//form[@id='registration_form']" position="attributes">
+              <attribute name="t-if">event.event_ticket_ids</attribute>
+          </xpath>
+      </template>
+
+     </data>
+</openerp>

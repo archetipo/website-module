@@ -1,0 +1,198 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* website_sale_add_checkout
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-30 20:42+0000\n"
+"PO-Revision-Date: 2017-01-30 20:42+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "-- Create a new address --"
+msgstr "-- Crea un nuovo indirizzo --"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "<span class=\"fa fa-arrow-right\"/> change"
+msgstr "<span class=\"fa fa-arrow-right\"/> modifica"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "<span class=\"fa fa-long-arrow-left\"/> Return to Cart"
+msgstr "<span class=\"fa fa-long-arrow-left\"/> Torna al Carrello"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Association"
+msgstr "Associazione"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "City"
+msgstr "Città"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Company"
+msgstr "Azienda"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Company Name"
+msgstr "Nome Azienda"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Confirm <span class=\"fa fa-long-arrow-right\"/>"
+msgstr "Conferma <span class=\"fa fa-long-arrow-right\"/>"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Country"
+msgstr "Nazione"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Country..."
+msgstr "Nazione..."
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Donation - Checkout"
+msgstr "Donazione - Registrazione Dati"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Email"
+msgstr "Email"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Individual"
+msgstr "Persona"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Name (Shippings)"
+msgstr "Name (Spedizione)"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Partner Type"
+msgstr "Tipologia Registrante"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Phone"
+msgstr "Telefono"
+
+#. module: website_sale_add_checkout
+#: code:addons/website_sale_add_checkout/controllers/main.py:64
+#, python-format
+msgid "Please select Partner Type"
+msgstr "Manca  Tipologia Registrante"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.signup_province
+msgid "Province"
+msgstr "Provincia"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.signup_province
+msgid "Province..."
+msgstr "Provincie..."
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Receipt Information"
+msgstr "Informaizoni per Ricevuta"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Select Element"
+msgstr "Seleziona un'opzione"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Ship to the same address"
+msgstr "Spedisci allo stesso indirizzo"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Shippings"
+msgstr "Spedizioni"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Shippings Information"
+msgstr "Info Spedizioni"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Sign in"
+msgstr "Iscriviti al Portale"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "State / Province"
+msgstr "Provincia"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "State / Province..."
+msgstr "Provincia"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Street"
+msgstr "Indirizzo"
+
+#. module: website_sale_add_checkout
+#: code:addons/website_sale_add_checkout/controllers/main.py:48
+#, python-format
+msgid "Un elemento tra Partita IVA e Codice Fiscale deve essere presente"
+msgstr "Un elemento tra Partita IVA e Codice Fiscale deve essere presente"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "VAT Number"
+msgstr "Partita IVA"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Your Address"
+msgstr "Il tuo indirizzo"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Your Name"
+msgstr "Il vostro nome"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Your Order"
+msgstr "Il tuo Ordine"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "Zip / Postal Code"
+msgstr "CAP"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "or"
+msgstr "o"
+
+#. module: website_sale_add_checkout
+#: model:ir.ui.view,arch_db:website_sale_add_checkout.checkout
+msgid "select..."
+msgstr "seleziona..."

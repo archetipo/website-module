@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <record id="add_view_event_form" model="ir.ui.view">
+        <field name="name">event.event.add_view_event_form</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_title']" position="before">
+                <field name="image_medium" widget='image' class="oe_avatar oe_left"/>
+            </xpath>
+            <xpath expr="//field[@name='date_tz']" position="after">
+                <field name="allow_single_registrant"/>
+            </xpath>
+            <notebook position="inside">
+                <page string="Message or alert on ticket confirmation">
+                    <field name="message_on_ticket"/>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="view_event_registration_tree" model="ir.ui.view">
+        <field name="name">event.registration.view_event_registration_tree</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_event_registration_tree"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='name']" position="before">
+              <field name="ticket_code" readonly="True"/>
+          </xpath>
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="code_card"/>
+                <field name="single_registrant"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_event_registration_form" model="ir.ui.view">
+        <field name="name">event.registration.add_view_event_form</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_event_registration_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='event_id']" position="before">
+              <field name="ticket_code" readonly="True"/>
+          </xpath>
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="code_card"/>
+                <field name="single_registrant"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_add_registration_search" model="ir.ui.view">
+        <field name="name">event.registration.view_add_registration_search</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_registration_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='event_id']" position="after">
+                <field name="ticket_code"/>
+                <field name="code_card"/>
+                <field name="single_registrant"/>
+            </xpath>
+        </field>
+    </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+    <template id="add_assets_id" name="website assets for my module" inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+        <link rel="stylesheet" href="/website_add_theme/static/src/css/add.css"/>
+        <link rel="stylesheet" href="/website_add_theme/static/src/css/add_typography.css"/>
+        </xpath>
+    </template>
+
+    <template id="website.footer_default" inherit_id="website.footer_custom" customize_show="True" name="Automatic Footer">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="container hidden-print">
+                <div class="row">
+                    <div class="col-md-4 col-lg-3">
+                        <span class="menu_title">Our projects &amp; Services</span>
+                        <ul class="list-unstyled" id="products">
+                            <li><a href="/">Home</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4  col-lg-3" id="info">
+                        <span class="menu_title">Connect with us</span>
+                        <ul class="list-unstyled">
+                            <li><a href="/page/website.contactus">Contact us</a></li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li t-ignore="true"><i class="fa fa-phone"></i> <span t-field="res_company.phone"></span></li>
+                            <li t-ignore="true"><i class="fa fa-envelope"></i>  <span t-field="res_company.email"></span></li>
+                        </ul>
+                        <h2>
+                            <a t-att-href="website.social_facebook" t-if="website.social_facebook"><i class="fa fa-facebook-square"/></a>
+                            <a t-att-href="website.social_twitter" t-if="website.social_twitter"><i class="fa fa-twitter"/></a>
+                            <a t-att-href="website.social_linkedin" t-if="website.social_linkedin"><i class="fa fa-linkedin"/></a>
+                            <a t-att-href="website.social_youtube" t-if="website.social_youtube"><i class="fa fa-youtube-play"/></a>
+                            <a t-att-href="website.social_googleplus" t-if="website.social_googleplus" rel="publisher"><i class="fa fa-google-plus-square"/></a>
+                            <a t-att-href="website.social_github" t-if="website.social_github"><i class="fa fa-github"/></a>
+                        </h2>
+                    </div>
+                    <div class="col-md-4 col-lg-5 col-lg-offset-1">
+                        <span class="menu_title">
+                            <span t-field="res_company.name" />
+                            <small> - <a href="/page/website.aboutus">About us</a></small>
+                        </span>
+                        <t t-call="website.language_selector"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="website.layout_footer_copyright" inherit_id="website.layout" name="Footer Copyright">
+      <xpath expr="//footer" position="inside">
+          <div class="container">
+              <div class="col-md-6 pull-right" t-ignore="true" t-if="not editable">
+                Powered by <a class="label" href="http://www.odoo.com/page/website-builder">Odoo</a>.
+                Try the <a href="http://www.odoo.com/page/website-builder"> open source experience</a>.
+                Coding by <a class="label" href="https://github.com/archetipo">Alessio Gerace</a>.
+              </div>
+              <div class="col-md-6 pull-left text-muted">
+                  Copyright &amp;copy; <span t-field="res_company.name">Company name</span>
+              </div>
+          </div>
+      </xpath>
+    </template>
+
+    <record id="website.layout_footer_copyright" model="ir.ui.view">
+        <field name="priority" eval="99" />
+    </record>
+
+     </data>
+</openerp>

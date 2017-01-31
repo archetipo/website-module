@@ -1,0 +1,40 @@
+.add_media_list{
+    margin-top: 10px;
+}
+
+@media screen and (min-width: 992px) {
+  .add_event_item{
+    padding: .5em;
+    padding-left: 5em;
+  }
+}
+.add_event{
+  border: 1px solid antiquewhite;
+  border-radius: 6px;
+  align-content: center;
+  margin-bottom: 3px;
+  background-color: white;
+
+}
+.img_event{
+  display:none;
+}
+@media screen and (min-width: 992px) {
+  .img_event{
+    float: left;
+    padding: 2em;
+    display:block;
+  }
+}
+@media screen and (min-width: 992px) {
+  .img_event_mr1 {
+      float: left;
+      padding-left: 3em;
+      margin-right: 1em;
+  }
+  .img_event_ml1 {
+      float: left;
+      padding-left: 3em;
+      margin-left: 1em;
+  }
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <record id="view_event_form_inherit_ticket" model="ir.ui.view">
+        <field name="name">event.event._in_add_view_event_form</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event_sale.view_event_form_inherit_ticket"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='price']" position="after">
+                <field name="single_registrant"/>
+                <field name="use_code_card"/>
+                <field name="code_card" attr="{readonly:[('use_code_card','=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="website_event_sale.registration_template" model="ir.ui.view">
+        <field name="active" eval="False" />
+    </record>
+
+  </data>
+</openerp>

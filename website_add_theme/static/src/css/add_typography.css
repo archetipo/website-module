@@ -1,0 +1,214 @@
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  text-rendering: geometricPrecision;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+h3,
+h4,
+h5,
+h6,
+.h3,
+.h4,
+.h5,
+.h6 {
+  line-height: 1.4;
+}
+h1,
+h2,
+.h1,
+.h2 {
+  font-weight: 200;
+}
+h1 b,
+h2 b,
+.h1 b,
+.h2 b,
+h1 strong,
+h2 strong,
+.h1 strong,
+.h2 strong,
+h1 a,
+h2 a,
+.h1 a,
+.h2 a {
+  font-weight: 300;
+}
+h3,
+.h3 {
+  font-weight: 300;
+}
+h3 b,
+.h3 b,
+h3 strong,
+.h3 strong,
+h3 a,
+.h3 a {
+  font-weight: 400;
+}
+h4,
+.h4 {
+  font-weight: 400;
+}
+h4 b,
+.h4 b,
+h4 strong,
+.h4 strong,
+h4 a,
+.h4 a {
+  font-weight: 500;
+}
+h5,
+h6,
+.h5,
+.h6 {
+  font-weight: 500;
+}
+h5 b,
+h6 b,
+.h5 b,
+.h6 b,
+h5 strong,
+h6 strong,
+.h5 strong,
+.h6 strong,
+h5 a,
+h6 a,
+.h5 a,
+.h6 a {
+  font-weight: 600;
+}
+.display-1 {
+  font-size: 6rem;
+}
+@media screen and (max-width: 991px) {
+  .display-1 {
+    font-size: 5rem;
+  }
+}
+.display-2 {
+  font-size: 5.5rem;
+}
+@media screen and (max-width: 991px) {
+  .display-2 {
+    font-size: 4.5rem;
+  }
+}
+.display-3 {
+  font-size: 4.5rem;
+}
+@media screen and (max-width: 991px) {
+  .display-3 {
+    font-size: 3.5rem;
+  }
+}
+.display-4 {
+  font-size: 3.5rem;
+}
+@media screen and (max-width: 991px) {
+  .display-4 {
+    font-size: 2.5rem;
+  }
+}
+.fw_extralight {
+  font-weight: 200;
+}
+.fw_extralight b,
+.fw_extralight strong,
+.fw_extralight a {
+  font-weight: 300;
+}
+.fw_light {
+  font-weight: 300;
+}
+.fw_light b,
+.fw_light strong,
+.fw_light a {
+  font-weight: 400;
+}
+.fw_regular {
+  font-weight: 400;
+}
+.fw_regular b,
+.fw_regular strong,
+.fw_regular a {
+  font-weight: 500;
+}
+.fw_medium {
+  font-weight: 500;
+}
+.fw_medium b,
+.fw_medium strong,
+.fw_medium a {
+  font-weight: 600;
+}
+.fw_semibold {
+  font-weight: 600;
+}
+.fw_semibold b,
+.fw_semibold strong,
+.fw_semibold a {
+  font-weight: 700;
+}
+.fw_bold {
+  font-weight: 700;
+}
+.fw_bold b,
+.fw_bold strong,
+.fw_bold a {
+  font-weight: 700;
+}
+a {
+  font-family: "Work Sans", sans-serif;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+.font-heading {
+  font-family: "Work Sans", sans-serif;
+  letter-spacing: -0.01em;
+}
+.font-sans {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+}
+.text-heading {
+  color: #21313a;
+}
+.text-default {
+  color: #666c75;
+}
+.text-white a {
+  font-weight: bold;
+  color: #26D1AF;
+}
+.text-white a:hover,
+.text-white a:focus {
+  color: #2AEBC4;
+}
+@media (max-width: 767px) {
+  .text-center-xs {
+    text-align: center;
+  }
+}
+@media (max-width: 991px) {
+  .text-center-sm {
+    text-align: center;
+  }
+}
+blockquote {
+  border-left-width: 3px;
+}
